@@ -1,121 +1,42 @@
 {
-  "name": "homebridge-sanremo-cube",
-  "version": "1.0.0",
-  "description": "Sanremo Cube",
-  "main": "dist/accessory.js",
-  "scripts": {
-    "clean": "rimraf ./dist",
-    "build": "rimraf ./dist && tsc",
-    "prepublishOnly": "npm run build",
-    "postpublish": "npm run clean",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "private": true,
+  "displayName": "Sanremo Coffee Machines",
+  "name": "homebridge-sanremo-coffee-machines",
+  "version": "1.1.0",
+  "description": "Sanremo Coffee Machines",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nsinenian/homebridge-sanremo-coffee-machines.git"
   },
-  "author": "Nareg Sinenian <nareg@sinenian.com>",
+  "bugs": {
+    "url": "https://github.com/nsinenian/homebridge-sanremo-coffee-machines/issues"
+  },
   "engines": {
-    "homebridge": ">=1.0.0"
+    "homebridge": ">=1.6",
+    "node-js": ">20.0"
+  },
+  "main": "dist/index.js",
+  "scripts": {
+    "lint": "eslint src/**.ts --max-warnings=0",
+    "watch": "npm run build && npm link && nodemon",
+    "build": "rimraf ./dist && tsc",
+    "prepublishOnly": "npm run lint && npm run build"
   },
   "keywords": [
     "homebridge-plugin"
   ],
-  "license": "ISC",
-  "files": [
-    "LICENSE",
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/nsinenian/homebridge-sanremo-cube.git"
-  },
-  "bugs": {
-    "url": "http://github.com/nsinenian/homebridge-sanremo-cube.git/issues"
+  "dependencies": {
+    "hap-nodejs": "^0.11.1"
   },
   "devDependencies": {
-    "@types/node": "10.17.19",
-    "homebridge": "^1.0.4",
-    "rimraf": "^3.0.2",
-    "typescript": "^3.8.3"
-  },
-  "homepage": "https://github.com/nsinenian/homebridge-sanremo-cube.git#readme",
-  "dependencies": {
-    "@types/node-fetch": "^2.6.2",
-    "ansi-styles": "^4.2.1",
-    "array-filter": "^1.0.0",
-    "array-flatten": "^2.1.2",
-    "available-typed-arrays": "^1.0.2",
-    "balanced-match": "^1.0.0",
-    "bonjour-hap": "^3.5.9",
-    "brace-expansion": "^1.1.11",
-    "buffer-from": "^1.1.1",
-    "chalk": "^3.0.0",
-    "color-convert": "^2.0.1",
-    "color-name": "^1.1.4",
-    "commander": "^5.0.0",
-    "concat-map": "^0.0.1",
-    "debug": "^4.1.1",
-    "decimal.js": "^10.2.0",
-    "deep-equal": "^2.0.3",
-    "define-properties": "^1.1.3",
-    "dns-packet": "^5.4.0",
-    "es-abstract": "^1.17.5",
-    "es-get-iterator": "^1.1.0",
-    "es-to-primitive": "^1.2.1",
-    "fast-srp-hap": "^2.0.1",
-    "foreach": "^2.0.5",
-    "fs.realpath": "^1.0.0",
-    "function-bind": "^1.1.1",
-    "glob": "^7.1.6",
-    "has": "^1.0.3",
-    "has-flag": "^4.0.0",
-    "has-symbols": "^1.0.1",
-    "inflight": "^1.0.6",
-    "inherits": "^2.0.4",
-    "ip": "^1.1.5",
-    "is-arguments": "^1.0.4",
-    "is-bigint": "^1.0.0",
-    "is-boolean-object": "^1.0.1",
-    "is-callable": "^1.1.5",
-    "is-date-object": "^1.0.2",
-    "is-map": "^2.0.1",
-    "is-number-object": "^1.0.4",
-    "is-regex": "^1.0.5",
-    "is-set": "^2.0.1",
-    "is-string": "^1.0.5",
-    "is-symbol": "^1.0.3",
-    "is-typed-array": "^1.1.3",
-    "is-weakmap": "^2.0.1",
-    "is-weakset": "^2.0.1",
-    "isarray": "^2.0.5",
-    "minimatch": "^3.0.4",
-    "minimist": "^1.2.6",
-    "mkdirp": "^0.5.5",
-    "ms": "^2.1.2",
-    "multicast-dns": "^7.2.5",
-    "multicast-dns-service-types": "^1.1.0",
-    "node-fetch": "^2.6.1",
-    "node-persist": "^0.0.11",
-    "object-inspect": "^1.7.0",
-    "object-is": "^1.1.2",
-    "object-keys": "^1.1.1",
-    "object.assign": "^4.1.0",
-    "once": "^1.4.0",
-    "path-is-absolute": "^1.0.1",
-    "q": "^1.1.2",
-    "qrcode-terminal": "^0.12.0",
-    "regexp.prototype.flags": "^1.3.0",
-    "semver": "^7.3.2",
-    "side-channel": "^1.0.2",
-    "source-map": "^0.6.1",
-    "source-map-support": "^0.5.19",
-    "string.prototype.trimend": "^1.0.1",
-    "string.prototype.trimleft": "^2.1.2",
-    "string.prototype.trimright": "^2.1.2",
-    "string.prototype.trimstart": "^1.0.1",
-    "supports-color": "^7.1.0",
-    "thunky": "^1.1.0",
-    "tweetnacl": "^1.0.3",
-    "which-boxed-primitive": "^1.0.1",
-    "which-collection": "^1.0.1",
-    "which-typed-array": "^1.1.2",
-    "wrappy": "^1.0.2"
+    "@types/node": ">=18.16.20",
+    "@typescript-eslint/eslint-plugin": ">=5.62.0",
+    "@typescript-eslint/parser": ">=5.62.0",
+    "eslint": ">=8.45.0",
+    "nodemon": ">=2.0.22",
+    "rimraf": ">=3.0.2",
+    "ts-node": ">=10.9.1",
+    "typescript": ">=4.9.5"
   }
 }

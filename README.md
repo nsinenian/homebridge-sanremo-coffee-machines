@@ -1,20 +1,33 @@
-# Sanremo Cube Hombridge Plugin
-This plugin implements a switch and temperature sensor that allows for switching the Sanremo Cube into or out of standby mode and for monitoring the heat exchanger temperature.  The latter is limited as HomeKit only supports display of temperatures up to 100 degC. 
+# Sanremo Coffee Machines Hombridge Plugin
+
+This plugin currently only supports the Sanremo Cube.  It implements a heater widget to allow for switching the Cube into or out of standby mode, to monitor and alter the boiler temperature, and to monitor and provide indications for water filter maintenance.
 
 The following prerequisites apply when using this plugin:
 
-1. The Sanremo Cube should be left switched on (hard rocker switch in the on position)
-2. The unit should be connected to the same network as Homebridge (consult the Sanremo Cube manual on how to connect the Cube to a wireless network)
-2. A known static IP address should be assigned (consult the Sanremo Cube manual)
+1. The machine should be left switched on (hard rocker switch in the on position) to facilitate communication between the internal WiFi module and homebridge.
+2. The machine should be connected to the same network as Homebridge (consult the machine  manual on how to connect the machine to a wireless network)
+2. A known static IP address should be assigned (consult the machine manual)
 
 # Plugin Configuration
 
 After installing the plugin, configure as follows:
 
-    {
-        "accessory": "SanremoCube", 
-        "name": "Sanremo Cube",
-        "ip": "[Your Statically Configured IP address here]"
-    }
-    
-In the above excerpt, the first line should be exactly as shown above.  The second line ("name") can be customized to the user's liking.  The third entry should match the IP address you have configured (by following the Sanremo setup guide).
+    "platforms": [
+        {
+            "name": "Config",
+            "port": 8581,
+            "platform": "config"
+        },
+        {
+            "platform": "SanremoCoffeeMachines",
+            "name": "SanremoCoffeeMachines",
+            "machines": [
+                {
+                    "name": "Sanremo Cube",
+                    "type": "Cube",
+                    "ip": "[Your statically configure IP here]"
+                }
+            ]
+        }
+        
+ Note that multiple machines are supported (i.e., see "machines" array above). The only "type" currently supported is the "Cube" and must be indicated as such. Other machines may be supported in the future.
